@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="690.0" prefWidth="1054.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ank.codeviewer.controller.PostsWindowController">
+         <children>
+            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="37.0" prefWidth="833.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                  <Label text="Адрес:  " />
+                  <TextField fx:id="txtServerAddress" text="http://localhost:8080" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                        <Button mnemonicParsing="false" onAction="#onRefreshContentButtonClick">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/play%2024.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Активация" />
+                     </tooltip></Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="hboxAutenthicationUser" alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="32.0" prefWidth="236.0" spacing="5.0">
+                     <children>
+                        <Button fx:id="btnSystemUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSystemUserButtonClick" text="Пользователь; Админ" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnActionSystemUser" mnemonicParsing="false" onAction="#onActionSystemUserButtonClick" text="Выход" />
+                     </children>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+      <HBox fx:id="hboxSubString" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Label text="Поиск кода:" />
+            <TextField fx:id="txtFilterCode" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+            <HBox fx:id="hboxNavigation" minHeight="-Infinity" prefWidth="1054.0" spacing="5.0">
+               <children>
+                  <HBox fx:id="hboxTableButtons" minHeight="-Infinity" prefWidth="634.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onRefreshPostsButtonClick" prefHeight="36.0" prefWidth="42.0">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/refresh%2032.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Обновить" />
+                     </tooltip></Button>
+                        <Button fx:id="btnAddPost" mnemonicParsing="false" onAction="#onAddPostButtonClick">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/add%2032.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Добавить пост" />
+                     </tooltip></Button>
+                        <Button fx:id="btnEditPost" mnemonicParsing="false" onAction="#onEditPostButtonClick">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/edit%2032.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Редактировать пост" />
+                     </tooltip></Button>
+                        <Button fx:id="btnDeletePost" mnemonicParsing="false" onAction="#onDeletePostButtonClick">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/delete%2032.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Удалить пост" />
+                     </tooltip></Button>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hboxCodeLang" alignment="CENTER_RIGHT" minHeight="-Infinity" prefWidth="200.0">
+                     <children>
+                        <ComboBox fx:id="cbCodeLang" prefWidth="150.0" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hboxPageNavigator" alignment="CENTER_RIGHT" minHeight="-Infinity" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <TableView fx:id="tvTablePosts" onKeyPressed="#onTableViewKeyPressed" onMousePressed="#onTableViewMousePressed" prefHeight="543.0" prefWidth="1054.0" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="columnAuthor" prefWidth="75.0" text="Автор" />
+                  <TableColumn fx:id="columnTitle" prefWidth="75.0" text="Заголовок" />
+                  <TableColumn fx:id="columnDateChange" prefWidth="75.0" text="Дата" />
+            <TableColumn fx:id="columnGrade" prefWidth="75.0" text="Оценка" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="583.0" prefWidth="836.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ank.codeviewer.controller.ViewPostWindowController">
+   <children>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+          <Tab text="Пост">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                         <HBox minHeight="-Infinity" prefWidth="200.0">
+                             <children>
+                                 <HBox maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                     <children>
+                                         <Label text="Автор:     " />
+                                         <Label fx:id="lblAuthor" text="-Автор-" />
+                                     </children>
+                                     <HBox.margin>
+                                         <Insets left="5.0" right="5.0" />
+                                     </HBox.margin>
+                                 </HBox>
+                                 <HBox minHeight="-Infinity" prefHeight="17.0" prefWidth="166.0">
+                                     <children>
+                                         <Label text="Дата:    " />
+                                         <Label fx:id="lblDate" text="-Дата-" />
+                                     </children>
+                                 </HBox>
+                                 <HBox minHeight="-Infinity" prefHeight="17.0" prefWidth="156.0">
+                                     <children>
+                                         <Label text="Язык:   " />
+                                         <Label fx:id="lblLangCode" text="-Язык-" />
+                                     </children>
+                                 </HBox>
+                             </children>
+                             <VBox.margin>
+                                 <Insets bottom="5.0" top="5.0" />
+                             </VBox.margin>
+                         </HBox>
+                        <VBox minHeight="-Infinity" prefWidth="100.0">
+                           <children>
+                              <Label text="Заголовок" />
+                              <TextField fx:id="txtTitle" editable="false" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox maxHeight="-Infinity" prefWidth="100.0">
+                           <children>
+                              <Label text="Описание" />
+                              <TextArea fx:id="txtDescription" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label text="Код" />
+                              <TextArea fx:id="txtCode" editable="false" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Средняя оценка:" />
+                              <Label fx:id="lblAvgGrade" text="-avgGrade-" />
+                              <HBox fx:id="hboxGradePost" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="25.0" prefWidth="441.0" spacing="5.0">
+                                 <children>
+                                    <Label text="Ваша оценка:   " />
+                                    <Label fx:id="lblYourGradePost" prefHeight="20.0" prefWidth="58.0" text="-Оценка-" />
+                                    <ComboBox fx:id="cbGradePost" prefWidth="150.0" />
+                                    <Button fx:id="btnSetGradePost" mnemonicParsing="false" onAction="#onSetGradePostButtonClick" prefHeight="25.0" prefWidth="71.0" text="Оценить" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+          </Tab>
+          <Tab onSelectionChanged="#onSelectionChangedTabComment" text="Комментарии">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                         <HBox minHeight="-Infinity" spacing="5.0">
+                             <children>
+                                 <HBox fx:id="hboxTableButtons" minHeight="-Infinity" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                     <children>
+                                         <Button mnemonicParsing="false" onAction="#onRefreshCommentsButtonClick">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../image/refresh%2032.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <tooltip>
+                                          <Tooltip text="Обновить" />
+                                       </tooltip></Button>
+                                         <Button fx:id="btnAddComment" mnemonicParsing="false" onAction="#onAddCommentsButtonClick">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../image/add%2032.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <tooltip>
+                                          <Tooltip text="Добавить комментарий" />
+                                       </tooltip></Button>
+                                     </children>
+                                 </HBox>
+                                 <HBox fx:id="hboxPageNavigator" alignment="CENTER_RIGHT" minHeight="-Infinity" prefWidth="200.0" />
+                             </children>
+                             <padding>
+                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                             </padding>
+                             <VBox.margin>
+                                 <Insets />
+                             </VBox.margin>
+                         </HBox>
+                        <ListView fx:id="lstComments" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </content></Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>
